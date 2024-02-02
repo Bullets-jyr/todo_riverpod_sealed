@@ -4,6 +4,7 @@ import 'package:todo_riverpod_sealed/pages/providers/theme/theme_provider.dart';
 import 'package:todo_riverpod_sealed/repositories/fake_todos_repository.dart';
 import 'package:todo_riverpod_sealed/repositories/providers/todos_repository_provider.dart';
 
+import 'pages/providers/theme/theme_state.dart';
 import 'pages/todos_page.dart';
 
 void main() {
@@ -27,13 +28,10 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Todos',
       debugShowCheckedModeBanner: false,
-      theme: currentTheme == AppTheme.light
-          ? ThemeData.light(useMaterial3: true)
-          : ThemeData.dark(useMaterial3: true),
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      //   useMaterial3: true,
-      // ),
+      theme: switch (currentTheme) {
+        LightTheme() => ThemeData.light(useMaterial3: true),
+        DarkTheme() => ThemeData.dark(useMaterial3: true),
+      },
       home: const TodosPage(),
     );
   }
