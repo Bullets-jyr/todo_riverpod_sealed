@@ -1,8 +1,4 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../../models/todo_model.dart';
-
-part 'todo_list_state.freezed.dart';
 
 sealed class TodoListState {
   const TodoListState();
